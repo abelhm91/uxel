@@ -39,9 +39,9 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="px-6 md:px-12 py-24 bg-ink">
       <motion.div
-        initial={reduce ? false : { opacity: 0, y: 16 }}
+        initial={reduce ? false : { opacity: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         className="flex justify-between items-end mb-12 flex-wrap gap-4"
       >
@@ -73,9 +73,9 @@ export default function Portfolio() {
         {proyectos.map((p, i) => (
           <motion.div
             key={p.id}
-            initial={reduce ? false : { opacity: 0, y: 20 }}
+            initial={reduce ? false : { opacity: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
             className={`relative overflow-hidden cursor-pointer group ${p.featured ? "md:col-span-2" : ""}`}
           >

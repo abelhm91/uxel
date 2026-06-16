@@ -13,6 +13,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const hasOpenedRef = useRef(false);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -22,10 +23,10 @@ export default function Nav() {
   // Move focus to first menu item on open; return focus to hamburger on close
   useEffect(() => {
     if (open) {
+      hasOpenedRef.current = true;
       const firstBtn = menuRef.current?.querySelector<HTMLButtonElement>("button");
       firstBtn?.focus();
-    } else {
-      // Only return focus if the menu was previously open
+    } else if (hasOpenedRef.current) {
       hamburgerRef.current?.focus();
     }
   }, [open]);
