@@ -64,7 +64,7 @@ export default function Hero() {
   return (
     <section
       id="main-content"
-      className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-0 px-6 md:px-12 items-center relative overflow-hidden"
+      className="md:min-h-screen grid grid-cols-1 md:grid-cols-2 gap-0 px-6 md:px-12 items-start md:items-center relative overflow-hidden"
     >
       <div
         className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -72,7 +72,7 @@ export default function Hero() {
       />
 
       {/* Left */}
-      <div className="max-w-[560px] animate-fade-in-up py-24 md:py-0">
+      <div className="max-w-[560px] animate-fade-in-up py-16 md:py-0">
         <div
           className="inline-flex items-center gap-2 text-accent font-mono text-xs px-3 py-1.5 rounded-full mb-7 border border-accent/25"
           style={{ background: "var(--color-accent-subtle)" }}
