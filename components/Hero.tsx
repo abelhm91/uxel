@@ -92,7 +92,7 @@ export default function Hero() {
           online. Rapidos, bonitos y que venden.
         </p>
 
-        <div className="flex gap-4 items-center justify-center md:justify-start">
+        <div className="flex gap-4 items-center">
           <button
             onClick={() => scrollTo("contacto")}
             className="bg-accent text-ink font-bold text-sm md:text-base px-6 md:px-8 py-3.5 rounded-full cursor-pointer whitespace-nowrap active:scale-[0.97] border border-transparent"
