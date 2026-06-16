@@ -111,13 +111,24 @@ export default function Portfolio() {
                 }}
               />
 
-              {/* Hover overlay */}
+              {/* Yellow tint — fades out on hover */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "#000000",
+                  mixBlendMode: "color",
+                  opacity: hoveredId === p.id ? 0 : 1,
+                  transition: reduce ? "none" : "opacity 400ms cubic-bezier(0.23,1,0.32,1)",
+                }}
+              />
+
+              {/* Info overlay — fades in on hover */}
               <div
                 className="absolute inset-0 flex flex-col justify-end p-4"
                 style={{
                   background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)",
                   opacity: hoveredId === p.id ? 1 : 0,
-                  transition: reduce ? "none" : "opacity 240ms ease-out",
+                  transition: reduce ? "none" : "opacity 300ms ease-out",
                 }}
               >
                 <span className="font-mono text-[0.6rem] text-white/50 tracking-[0.07em] uppercase block mb-1">
