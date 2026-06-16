@@ -79,7 +79,7 @@ export default function Portfolio() {
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
             className={`relative overflow-hidden cursor-pointer group ${p.featured ? "md:col-span-2" : ""}`}
           >
-            <div className={`relative overflow-hidden ${p.featured ? "aspect-[16/7]" : "aspect-[4/3]"}`}>
+            <div className={`relative overflow-hidden ${p.featured ? "aspect-[4/3] md:aspect-[16/7]" : "aspect-[4/3]"}`}>
               <Image
                 src={`https://picsum.photos/seed/${p.seed}/${p.w}/${p.h}`}
                 alt={p.alt}

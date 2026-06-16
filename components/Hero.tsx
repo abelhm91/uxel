@@ -81,7 +81,7 @@ export default function Hero() {
           Disponible para proyectos
         </div>
 
-        <h1 className="text-[clamp(2.8rem,5vw,4.5rem)] font-black leading-[1.03] tracking-[-0.04em] mb-6 text-balance">
+        <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-black leading-[1.03] tracking-[-0.04em] mb-6 text-balance">
           Diseño web que{" "}
           <em className="not-italic text-accent">convierte</em>{" "}
           visitas en clientes
