@@ -95,7 +95,7 @@ export default function Hero() {
         <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start">
           <button
             onClick={() => scrollTo("contacto")}
-            className="bg-accent text-ink font-bold text-base px-8 py-3.5 rounded-full cursor-pointer whitespace-nowrap active:scale-[0.97]"
+            className="bg-accent text-ink font-bold text-base px-8 py-3.5 rounded-full cursor-pointer whitespace-nowrap active:scale-[0.97] border border-transparent"
             style={{ transition: "background-color 160ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1)" }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--color-accent-dark)")}
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--color-accent)")}
