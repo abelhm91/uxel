@@ -92,10 +92,10 @@ export default function Hero() {
           online. Rapidos, bonitos y que venden.
         </p>
 
-        <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start">
+        <div className="flex gap-4 items-center justify-center md:justify-start">
           <button
             onClick={() => scrollTo("contacto")}
-            className="bg-accent text-ink font-bold text-base px-8 py-3.5 rounded-full cursor-pointer whitespace-nowrap active:scale-[0.97] border border-transparent"
+            className="bg-accent text-ink font-bold text-sm md:text-base px-6 md:px-8 py-3.5 rounded-full cursor-pointer whitespace-nowrap active:scale-[0.97] border border-transparent"
             style={{ transition: "background-color 160ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1)" }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--color-accent-dark)")}
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--color-accent)")}
@@ -104,7 +104,7 @@ export default function Hero() {
           </button>
           <button
             onClick={() => scrollTo("portfolio")}
-            className="bg-transparent text-white/70 border border-white/20 text-base px-7 py-3.5 rounded-full cursor-pointer font-medium active:scale-[0.97]"
+            className="bg-transparent text-white/70 border border-white/20 text-sm md:text-base px-5 md:px-7 py-3.5 rounded-full cursor-pointer font-medium whitespace-nowrap active:scale-[0.97]"
             style={{ transition: "border-color 160ms ease-out, color 160ms ease-out, transform 160ms cubic-bezier(0.23,1,0.32,1)" }}
             onMouseEnter={e => {
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
