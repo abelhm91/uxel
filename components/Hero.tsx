@@ -72,7 +72,7 @@ export default function Hero() {
       />
 
       {/* Left */}
-      <div className="max-w-[560px] animate-fade-in-up py-16 md:py-0">
+      <div className="max-w-[560px] animate-fade-in-up py-[86px] md:py-0">
         <div
           className="inline-flex items-center gap-2 text-accent font-mono text-xs px-3 py-1.5 rounded-full mb-7 border border-accent/25"
           style={{ background: "var(--color-accent-subtle)" }}
