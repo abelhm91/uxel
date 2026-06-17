@@ -159,6 +159,16 @@ export default function Hero() {
       id="main-content"
       className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 px-6 md:px-12 py-16 md:py-0 items-center relative overflow-hidden"
     >
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
+          maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
+        }}
+      />
       {/* Glow */}
       <div
         className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full pointer-events-none"
