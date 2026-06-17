@@ -11,7 +11,7 @@ const navItems = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const hasOpenedRef = useRef(false);
@@ -20,9 +20,7 @@ export default function Nav() {
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
-      if (currentY < 10) {
-        setHidden(false);
-      } else if (currentY > lastScrollY.current + 4) {
+      if (currentY > lastScrollY.current + 4) {
         setHidden(true);
         setOpen(false);
       } else if (currentY < lastScrollY.current - 4) {
