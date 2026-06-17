@@ -43,7 +43,6 @@ export default function Proceso() {
     <section
       id="proceso"
       className="px-6 md:px-12 py-24 relative overflow-hidden bg-surface"
-      style={{ color: "var(--color-ink)" }}
     >
       {/* Header */}
       <motion.div
@@ -71,8 +70,8 @@ export default function Proceso() {
             onMouseLeave={() => setHovered(null)}
             className="relative rounded-2xl p-6 flex flex-col overflow-hidden cursor-default"
             style={{
-              background: "var(--color-ink)",
-              border: `1px solid ${hovered === i ? "var(--color-accent)" : "rgba(255,255,255,0.06)"}`,
+              background: "var(--color-ink2)",
+              border: `1px solid ${hovered === i ? "var(--color-accent)" : "rgba(255,255,255,0.08)"}`,
               transform: hovered === i && !reduce ? "translateY(-4px)" : "translateY(0)",
               transition: reduce ? "none" : "border-color 250ms ease-out, transform 250ms cubic-bezier(0.23,1,0.32,1), box-shadow 250ms ease-out",
               boxShadow: hovered === i ? "0 20px 48px rgba(0,0,0,0.3)" : "0 4px 16px rgba(0,0,0,0.12)",
