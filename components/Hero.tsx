@@ -64,7 +64,7 @@ export default function Hero() {
   return (
     <section
       id="main-content"
-      className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-0 px-6 md:px-12 items-center relative overflow-hidden"
+      className="min-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 gap-0 px-6 md:px-12 items-center relative overflow-hidden"
     >
       <div
         className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -72,7 +72,7 @@ export default function Hero() {
       />
 
       {/* Left */}
-      <div className="max-w-[560px] animate-fade-in-up py-24 md:py-0">
+      <div className="max-w-[560px] animate-fade-in-up md:py-0">
 
         <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-black leading-[1.03] tracking-[-0.04em] mb-6 text-balance">
           Diseño web que{" "}
