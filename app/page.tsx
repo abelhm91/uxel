@@ -1,4 +1,3 @@
-import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Servicios from "@/components/Servicios";
@@ -10,8 +9,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Nav />
-      <main className="pt-16">
+      <main>
         <Hero />
         <Marquee />
         <Servicios />

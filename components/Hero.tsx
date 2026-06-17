@@ -1,58 +1,127 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 
-const services = ["Landing Pages", "E-commerce", "Corporativas"];
-
-function ServiceRotator() {
-  const [idx, setIdx] = useState(0);
+function HeroVisual() {
   const reduce = useReducedMotion();
 
-  useEffect(() => {
-    const id = setInterval(() => setIdx(i => (i + 1) % services.length), 3000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
-    <div className="hidden md:flex flex-col justify-center pl-16 border-l border-white/6">
-      <p className="font-mono text-[0.65rem] tracking-[0.12em] text-white/25 uppercase mb-8 tabular-nums">
-        {String(idx + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
-      </p>
+    <motion.div
+      className="hidden md:flex items-center justify-end"
+      initial={reduce ? false : { opacity: 0, x: 24 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.9, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+    >
+      <div className="relative w-full max-w-[460px]">
 
-      <div style={{ overflow: "hidden" }}>
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={idx}
-            className="font-mono font-medium leading-[1] tracking-[-0.02em] text-accent"
-            style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)" }}
-            initial={{ opacity: 0, y: reduce ? 0 : 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: reduce ? 0 : -40 }}
-            transition={
-              reduce
-                ? { duration: 0.15 }
-                : { duration: 0.5, ease: [0.23, 1, 0.32, 1] }
-            }
-          >
-            {services[idx]}
-          </motion.p>
-        </AnimatePresence>
-      </div>
-
-      <div className="flex gap-1.5 mt-10">
-        {services.map((_, i) => (
+        {/* Browser mockup card */}
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 40px 100px rgba(0,0,0,0.55)",
+          }}
+        >
+          {/* Browser chrome bar */}
           <div
-            key={i}
-            className="h-px flex-1"
+            className="flex items-center gap-3 px-4 py-3"
             style={{
-              background: i === idx ? "var(--color-accent)" : "rgba(255,255,255,0.12)",
-              transition: "background 400ms ease-out",
+              background: "rgba(255,255,255,0.04)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
             }}
-          />
-        ))}
+          >
+            <div className="flex gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+              <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+              <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+            </div>
+            <div
+              className="flex-1 h-5 rounded-md flex items-center px-2.5 font-mono text-[0.6rem] text-white/25"
+              style={{ background: "rgba(255,255,255,0.05)" }}
+            >
+              abelwp.es
+            </div>
+          </div>
+
+          {/* Screenshot */}
+          <div className="relative" style={{ aspectRatio: "4/3" }}>
+            <Image
+              src="https://picsum.photos/seed/architecture-studio/800/600"
+              alt="Ejemplo de diseño web a medida"
+              fill
+              sizes="460px"
+              className="object-cover"
+              priority
+            />
+            {/* Bottom gradient */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.5) 100%)",
+              }}
+            />
+            {/* Status badge */}
+            <div
+              className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full"
+              style={{
+                background: "rgba(0,0,0,0.65)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ background: "var(--color-accent)" }}
+              />
+              <span className="font-mono text-[0.6rem] text-white/65 tracking-wide">
+                Disponible · España
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating projects card */}
+        <motion.div
+          className="absolute -bottom-5 -right-5 px-4 py-3 rounded-xl"
+          style={{
+            background: "var(--color-accent)",
+            boxShadow: "0 12px 32px rgba(0,0,0,0.35)",
+          }}
+          initial={reduce ? false : { opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.7, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <p className="font-mono text-[0.55rem] text-ink/50 uppercase tracking-widest mb-0.5">
+            Proyectos
+          </p>
+          <p className="font-black text-2xl text-ink leading-none">+20</p>
+        </motion.div>
+
+        {/* Floating satisfaction card */}
+        <motion.div
+          className="absolute -top-4 -left-4 px-4 py-3 rounded-xl"
+          style={{
+            background: "rgba(20,20,20,0.9)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+          }}
+          initial={reduce ? false : { opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.85, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <p className="font-mono text-[0.55rem] text-white/35 uppercase tracking-widest mb-0.5">
+            Satisfacción
+          </p>
+          <p className="font-black text-2xl text-white leading-none">
+            100<span className="text-accent text-lg">%</span>
+          </p>
+        </motion.div>
+
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -64,8 +133,9 @@ export default function Hero() {
   return (
     <section
       id="main-content"
-      className="min-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 gap-0 px-6 md:px-12 items-center relative overflow-hidden"
+      className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-12 items-center relative overflow-hidden"
     >
+      {/* Glow */}
       <div
         className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, var(--color-accent-subtle) 0%, transparent 70%)" }}
@@ -113,8 +183,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Right — service rotator */}
-      <ServiceRotator />
+      {/* Right — browser mockup */}
+      <HeroVisual />
     </section>
   );
 }
