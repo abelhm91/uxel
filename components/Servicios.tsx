@@ -23,7 +23,8 @@ export default function Servicios() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="servicios" className="px-6 md:px-12 py-24 bg-ink">
+    <section id="servicios" className="py-24 bg-ink">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
       <div className="mb-14">
         <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-black tracking-[-0.04em] leading-[1.1] max-w-[20ch] text-balance">
           Tres servicios. Un solo objetivo.
@@ -94,6 +95,7 @@ export default function Servicios() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

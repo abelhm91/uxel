@@ -49,9 +49,10 @@ export default function Contacto() {
   return (
     <section
       id="contacto"
-      className="px-6 md:px-12 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center"
+      className="py-24"
       style={{ background: "var(--color-accent)", color: "var(--color-ink)" }}
     >
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
       {/* Left */}
       <div>
         <h2 className="text-[clamp(2.2rem,4vw,3.5rem)] font-black tracking-[-0.04em] leading-[1.05] mb-5 text-balance">
@@ -149,6 +150,7 @@ export default function Contacto() {
           </span>
         </button>
       </form>
+      </div>
     </section>
   );
 }

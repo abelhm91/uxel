@@ -62,7 +62,7 @@ export default function Portfolio() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-        className="px-6 md:px-12 mb-10"
+        className="max-w-[1280px] mx-auto px-6 md:px-12 mb-10"
       >
         <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-black tracking-[-0.04em] leading-[1.1] text-balance">
           Trabajos seleccionados

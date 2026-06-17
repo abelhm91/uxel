@@ -42,8 +42,9 @@ export default function Proceso() {
   return (
     <section
       id="proceso"
-      className="px-6 md:px-12 py-24 relative overflow-hidden bg-surface"
+      className="py-24 relative overflow-hidden bg-surface"
     >
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
       {/* Header */}
       <motion.div
         initial={reduce ? false : { opacity: 0, y: 10 }}
@@ -135,6 +136,7 @@ export default function Proceso() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

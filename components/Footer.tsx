@@ -1,6 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-ink2 border-t border-white/6 px-6 md:px-12 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="bg-ink2 border-t border-white/6 py-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p className="font-mono text-xs text-white/40">
         © 2025 UXEL_, Diseño web freelance
       </p>
@@ -17,6 +18,7 @@ export default function Footer() {
           </li>
         ))}
       </ul>
+      </div>
     </footer>
   );
 }

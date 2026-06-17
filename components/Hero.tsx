@@ -157,7 +157,7 @@ export default function Hero() {
   return (
     <section
       id="main-content"
-      className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 px-6 md:px-12 py-16 md:py-0 items-center relative overflow-hidden"
+      className="min-h-screen relative overflow-hidden flex items-center"
     >
       {/* Dot grid background */}
       <div
@@ -174,6 +174,9 @@ export default function Hero() {
         className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, var(--color-accent-subtle) 0%, transparent 70%)" }}
       />
+
+      {/* Inner constrained grid */}
+      <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 py-16 md:py-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
 
       {/* Left */}
       <div className="max-w-[560px] animate-fade-in-up md:py-0">
@@ -219,6 +222,7 @@ export default function Hero() {
 
       {/* Right — browser mockup */}
       <HeroVisual />
+      </div>
     </section>
   );
 }
