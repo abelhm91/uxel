@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
 function HeroVisual() {
@@ -8,12 +7,12 @@ function HeroVisual() {
 
   return (
     <motion.div
-      className="hidden md:flex items-center justify-end"
+      className="flex items-center justify-center md:justify-end"
       initial={reduce ? false : { opacity: 0, x: 24 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.9, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
     >
-      <div className="relative w-full max-w-[460px]">
+      <div className="relative w-full max-w-[340px] md:max-w-[460px]">
 
         {/* Browser mockup card */}
         <div
@@ -45,23 +44,48 @@ function HeroVisual() {
             </div>
           </div>
 
-          {/* Screenshot */}
-          <div className="relative" style={{ aspectRatio: "4/3" }}>
-            <Image
-              src="https://picsum.photos/seed/architecture-studio/800/600"
-              alt="Ejemplo de diseño web a medida"
-              fill
-              sizes="460px"
-              className="object-cover"
-              priority
-            />
-            {/* Bottom gradient */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: "linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.5) 100%)",
-              }}
-            />
+          {/* Web design mockup */}
+          <div className="relative overflow-hidden" style={{ aspectRatio: "4/3", background: "#0d0d0d" }}>
+            {/* Mini website */}
+            <div className="absolute inset-0 flex flex-col">
+              {/* Mini nav */}
+              <div className="flex items-center justify-between px-4 py-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <div className="font-mono text-[0.55rem] font-bold" style={{ color: "var(--color-accent)" }}>STUDIO_</div>
+                <div className="flex gap-3">
+                  {["Work", "About", "Contact"].map(item => (
+                    <div key={item} className="text-[0.45rem] text-white/30">{item}</div>
+                  ))}
+                </div>
+                <div className="h-3.5 w-10 rounded-full" style={{ background: "var(--color-accent)" }} />
+              </div>
+              {/* Mini hero */}
+              <div className="px-4 pt-4 pb-3">
+                <div className="h-2 rounded-full bg-white mb-1.5" style={{ width: "70%" }} />
+                <div className="h-2 rounded-full mb-3" style={{ width: "50%", background: "var(--color-accent)" }} />
+                <div className="h-1 rounded bg-white/15 mb-1" style={{ width: "100%" }} />
+                <div className="h-1 rounded bg-white/15 mb-3" style={{ width: "80%" }} />
+                <div className="flex gap-2">
+                  <div className="h-5 w-16 rounded-full" style={{ background: "var(--color-accent)" }} />
+                  <div className="h-5 w-14 rounded-full border border-white/20" />
+                </div>
+              </div>
+              {/* Mini cards grid */}
+              <div className="px-4 grid grid-cols-2 gap-2 flex-1">
+                {[1, 2, 3, 4].map(i => (
+                  <div key={i} className="rounded-lg p-2.5 flex flex-col gap-1" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div className="rounded flex-1" style={{ background: i === 1 ? "var(--color-accent)" : "rgba(255,255,255,0.08)", minHeight: 20, opacity: i === 1 ? 0.8 : 1 }} />
+                    <div className="h-1 rounded bg-white/20" style={{ width: "70%" }} />
+                    <div className="h-1 rounded bg-white/10" style={{ width: "45%" }} />
+                  </div>
+                ))}
+              </div>
+              <div className="px-4 pb-3 pt-2 flex gap-2">
+                {[70, 45, 60].map((w, i) => (
+                  <div key={i} className="h-1 rounded" style={{ width: `${w}px`, background: i === 0 ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.06)" }} />
+                ))}
+              </div>
+            </div>
+
             {/* Status badge */}
             <div
               className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full"
@@ -133,7 +157,7 @@ export default function Hero() {
   return (
     <section
       id="main-content"
-      className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-12 items-center relative overflow-hidden"
+      className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 px-6 md:px-12 py-16 md:py-0 items-center relative overflow-hidden"
     >
       {/* Glow */}
       <div
