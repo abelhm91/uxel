@@ -35,7 +35,7 @@ export default function Proceso() {
       style={{ color: "var(--color-ink)" }}
     >
       <motion.div
-        initial={reduce ? false : { opacity: 0 }}
+        initial={reduce ? false : { opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
@@ -46,20 +46,37 @@ export default function Proceso() {
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative">
-        <div className="hidden md:block absolute top-[22px] left-[22px] right-[22px] h-px bg-black/12" />
+
+        {/* Línea que se dibuja de izquierda a derecha */}
+        <motion.div
+          className="hidden md:block absolute top-[22px] left-[22px] right-[22px] h-px origin-left"
+          style={{ background: "rgba(0,0,0,0.12)" }}
+          initial={reduce ? false : { scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 1.4, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
+        />
 
         {pasos.map((p, i) => (
           <motion.div
             key={p.num}
-            initial={reduce ? false : { opacity: 0 }}
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.6, delay: i * 0.12, ease: [0.23, 1, 0.32, 1] }}
             className="relative"
           >
-            <div className="w-11 h-11 rounded-full bg-ink text-accent font-mono text-xs font-medium flex items-center justify-center mb-6 relative z-10">
+            {/* Círculo numerado con pop */}
+            <motion.div
+              className="w-11 h-11 rounded-full bg-ink text-accent font-mono text-xs font-medium flex items-center justify-center mb-6 relative z-10"
+              initial={reduce ? false : { scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: i * 0.12 + 0.15, ease: [0.23, 1, 0.32, 1] }}
+            >
               {p.num}
-            </div>
+            </motion.div>
+
             <h3 className="text-base font-bold tracking-[-0.02em] mb-2 text-ink">
               {p.title}
             </h3>
