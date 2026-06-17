@@ -73,13 +73,6 @@ export default function Hero() {
 
       {/* Left */}
       <div className="max-w-[560px] animate-fade-in-up py-[86px] md:py-0">
-        <div
-          className="inline-flex items-center gap-2 text-accent font-mono text-xs px-3 py-1.5 rounded-full mb-7 border border-accent/25"
-          style={{ background: "var(--color-accent-subtle)" }}
-        >
-          <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse-dot" />
-          Disponible para proyectos
-        </div>
 
         <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-black leading-[1.03] tracking-[-0.04em] mb-6 text-balance">
           Diseño web que{" "}
