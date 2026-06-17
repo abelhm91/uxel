@@ -72,7 +72,7 @@ export default function Hero() {
       />
 
       {/* Left */}
-      <div className="max-w-[560px] animate-fade-in-up py-[86px] md:py-0">
+      <div className="max-w-[560px] animate-fade-in-up py-24 md:py-0">
 
         <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-black leading-[1.03] tracking-[-0.04em] mb-6 text-balance">
           Diseño web que{" "}
