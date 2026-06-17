@@ -11,9 +11,28 @@ const navItems = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const hasOpenedRef = useRef(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY < 10) {
+        setHidden(false);
+      } else if (currentY > lastScrollY.current + 4) {
+        setHidden(true);
+        setOpen(false);
+      } else if (currentY < lastScrollY.current - 4) {
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -72,8 +91,12 @@ export default function Nav() {
   return (
     <>
       <nav
-        className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-12 h-16 border-b border-white/8 backdrop-blur-md"
-        style={{ background: "rgba(10,10,10,0.85)" }}
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 h-16 border-b border-white/8 backdrop-blur-md"
+        style={{
+          background: "rgba(10,10,10,0.85)",
+          transform: hidden ? "translateY(-100%)" : "translateY(0)",
+          transition: "transform 300ms cubic-bezier(0.23,1,0.32,1)",
+        }}
       >
         <div className="font-mono font-medium text-lg tracking-tight text-accent">
           UXEL_
