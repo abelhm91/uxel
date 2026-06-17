@@ -62,25 +62,11 @@ export default function Portfolio() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-        className="px-6 md:px-12 flex justify-between items-end mb-10 flex-wrap gap-4"
+        className="px-6 md:px-12 mb-10"
       >
         <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-black tracking-[-0.04em] leading-[1.1] text-balance">
           Trabajos seleccionados
         </h2>
-        <button
-          className="bg-transparent text-white/70 border border-white/20 text-sm px-5 py-2.5 rounded-full font-medium cursor-pointer active:scale-[0.97]"
-          style={{ transition: "border-color 160ms ease-out, color 160ms ease-out, transform 160ms cubic-bezier(0.23,1,0.32,1)" }}
-          onMouseEnter={e => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
-            e.currentTarget.style.color = "#ffffff";
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
-            e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-          }}
-        >
-          Ver todos
-        </button>
       </motion.div>
 
       {/* Scroll strip */}
