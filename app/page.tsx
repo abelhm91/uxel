@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main>
+      <main className="pt-16">
         <Hero />
         <Marquee />
         <Servicios />

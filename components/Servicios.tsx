@@ -26,10 +26,10 @@ export default function Servicios() {
     <section id="servicios" className="px-6 md:px-12 py-24 bg-ink">
       <div className="mb-14">
         <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-black tracking-[-0.04em] leading-[1.1] max-w-[20ch] text-balance">
-          Lo que puedo hacer por ti
+          Tres servicios. Un solo objetivo.
         </h2>
         <p className="mt-4 max-w-[40ch] text-white/65 leading-relaxed">
-          Sin paquetes genéricos. Cada proyecto parte de un briefing real y termina con un resultado concreto.
+          Sin plantillas, sin paquetes cerrados. Cada proyecto empieza desde cero y termina cuando funciona de verdad.
         </p>
       </div>
 

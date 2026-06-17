@@ -12,12 +12,14 @@ const navItems = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(true);
+  const [ready, setReady] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const hasOpenedRef = useRef(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    setReady(true);
     const handleScroll = () => {
       const currentY = window.scrollY;
       if (currentY > lastScrollY.current + 4) {
@@ -93,7 +95,7 @@ export default function Nav() {
         style={{
           background: "rgba(10,10,10,0.85)",
           transform: hidden ? "translateY(-100%)" : "translateY(0)",
-          transition: "transform 300ms cubic-bezier(0.23,1,0.32,1)",
+          transition: ready ? "transform 300ms cubic-bezier(0.23,1,0.32,1)" : "none",
         }}
       >
         <div className="font-mono font-medium text-lg tracking-tight text-accent">

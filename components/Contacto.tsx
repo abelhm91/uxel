@@ -55,11 +55,11 @@ export default function Contacto() {
       {/* Left */}
       <div>
         <h2 className="text-[clamp(2.2rem,4vw,3.5rem)] font-black tracking-[-0.04em] leading-[1.05] mb-5 text-balance">
-          Tienes un proyecto en mente?
+          ¿Lista tu próxima web?
         </h2>
         <p className="text-base text-black/65 max-w-[38ch] leading-relaxed mb-8">
-          Cuentame que necesitas. Respondo en menos de 24 horas y te doy una
-          primera estimacion sin compromiso.
+          Cuéntame qué necesitas. En menos de 24h te doy una respuesta honesta
+          y sin compromiso.
         </p>
 
         <div className="flex flex-col gap-3">

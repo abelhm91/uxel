@@ -41,7 +41,7 @@ export default function Proceso() {
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       >
         <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-black tracking-[-0.04em] leading-[1.1] mb-16 text-balance">
-          Del briefing al lanzamiento en cuatro pasos
+          Sin sorpresas. Sin retrasos. Así trabajo.
         </h2>
       </motion.div>
 

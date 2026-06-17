@@ -75,14 +75,14 @@ export default function Hero() {
       <div className="max-w-[560px] animate-fade-in-up md:py-0">
 
         <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-black leading-[1.03] tracking-[-0.04em] mb-6 text-balance">
-          Diseño web que{" "}
-          <em className="not-italic text-accent">convierte</em>{" "}
-          visitas en clientes
+          Tu web debería{" "}
+          <em className="not-italic text-accent">trabajar</em>{" "}
+          mientras duermes.
         </h1>
 
         <p className="text-lg text-white/70 leading-[1.65] max-w-[42ch] mb-10">
-          Creo sitios web a medida para marcas y negocios que quieren destacar
-          online. Rapidos, bonitos y que venden.
+          Diseño y desarrollo webs para marcas que saben lo que quieren: que se
+          vean bien, carguen rápido y conviertan.
         </p>
 
         <div className="flex gap-4 items-center">
