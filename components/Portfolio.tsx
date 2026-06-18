@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { X } from "@phosphor-icons/react";
 
 const proyectos = [
   {
@@ -49,9 +50,29 @@ const proyectos = [
 
 export default function Portfolio() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [modalProject, setModalProject] = useState<typeof proyectos[0] | null>(null);
   const reduce = useReducedMotion();
 
   const activeProject = proyectos.find(p => p.id === hoveredId) ?? null;
+
+  // Lock scroll when modal is open
+  useEffect(() => {
+    if (modalProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [modalProject]);
+
+  // Close on Escape
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setModalProject(null);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   return (
     <section id="portfolio" className="bg-ink overflow-hidden">
@@ -82,7 +103,8 @@ export default function Portfolio() {
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.23, 1, 0.32, 1] }}
                 onMouseEnter={() => setHoveredId(p.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="group flex items-center justify-between py-5 cursor-default relative"
+                onClick={() => setModalProject(p)}
+                className="group flex items-center justify-between py-5 cursor-pointer relative"
                 style={{
                   borderBottom: "1px solid rgba(255,255,255,0.07)",
                   borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none",
@@ -99,7 +121,6 @@ export default function Portfolio() {
                 />
 
                 <div className="flex items-center gap-6 pl-4">
-                  {/* Number */}
                   <span
                     className="font-mono text-xs tabular-nums w-6 flex-shrink-0"
                     style={{
@@ -109,8 +130,6 @@ export default function Portfolio() {
                   >
                     {p.num}
                   </span>
-
-                  {/* Title */}
                   <span
                     className="font-black tracking-[-0.03em] leading-tight"
                     style={{
@@ -125,7 +144,6 @@ export default function Portfolio() {
                   </span>
                 </div>
 
-                {/* Category + arrow */}
                 <div className="flex items-center gap-4 flex-shrink-0">
                   <span
                     className="hidden sm:block font-mono text-[0.65rem] tracking-[0.06em] uppercase"
@@ -148,29 +166,6 @@ export default function Portfolio() {
                     →
                   </span>
                 </div>
-
-                {/* Mobile image (visible on small screens, below the row) */}
-                <AnimatePresence>
-                  {hoveredId === p.id && (
-                    <motion.div
-                      className="md:hidden absolute left-0 right-0 top-full z-10 overflow-hidden"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 160, opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                    >
-                      <div className="relative w-full h-40">
-                        <Image
-                          src={`https://picsum.photos/seed/${p.seed}/800/500`}
-                          alt={p.alt}
-                          fill
-                          sizes="100vw"
-                          className="object-cover"
-                        />
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             ))}
           </div>
@@ -181,7 +176,7 @@ export default function Portfolio() {
               {activeProject ? (
                 <motion.div
                   key={activeProject.id}
-                  className="w-full h-full rounded-2xl overflow-hidden"
+                  className="w-full h-full rounded-2xl overflow-hidden relative"
                   initial={reduce ? undefined : { opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={reduce ? undefined : { opacity: 0, scale: 1.02 }}
@@ -195,7 +190,6 @@ export default function Portfolio() {
                     className="object-cover"
                     priority
                   />
-                  {/* Category overlay */}
                   <div className="absolute bottom-4 left-4">
                     <span
                       className="font-mono text-[0.65rem] tracking-[0.08em] uppercase px-3 py-1.5 rounded-full"
@@ -217,12 +211,8 @@ export default function Portfolio() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  style={{
-                    background: "#0d0d0d",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                  }}
+                  style={{ background: "#0d0d0d", border: "1px solid rgba(255,255,255,0.06)" }}
                 >
-                  {/* Browser chrome */}
                   <div className="flex items-center gap-3 px-5 py-3.5" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)", background: "rgba(255,255,255,0.03)" }}>
                     <div className="flex gap-1.5">
                       {[0,1,2].map(i => <div key={i} className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.1)" }} />)}
@@ -231,10 +221,7 @@ export default function Portfolio() {
                       abelwp.es/proyectos
                     </div>
                   </div>
-
-                  {/* Mini web layout */}
                   <div className="flex flex-col h-[calc(100%-44px)]">
-                    {/* Hero strip */}
                     <div className="px-6 pt-6 pb-5">
                       <div className="h-2.5 rounded-full bg-white mb-2" style={{ width: "55%" }} />
                       <div className="h-2.5 rounded-full mb-4" style={{ width: "38%", background: "var(--color-accent)" }} />
@@ -245,8 +232,6 @@ export default function Portfolio() {
                         <div className="h-7 w-16 rounded-full border border-white/15" />
                       </div>
                     </div>
-
-                    {/* Project rows preview */}
                     <div className="px-6 flex flex-col gap-0 flex-1">
                       {["Plataforma SaaS","Tienda de moda","Estudio arq."].map((name, i) => (
                         <div key={i} className="flex items-center justify-between py-3" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -263,10 +248,71 @@ export default function Portfolio() {
               )}
             </AnimatePresence>
           </div>
-
         </div>
       </div>
       <div className="pb-24" />
+
+      {/* Mobile modal */}
+      <AnimatePresence>
+        {modalProject && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 z-50"
+              style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(8px)" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setModalProject(null)}
+            />
+
+            {/* Modal card */}
+            <motion.div
+              className="fixed inset-x-4 bottom-4 z-50 rounded-2xl overflow-hidden"
+              style={{ background: "#111" }}
+              initial={reduce ? undefined : { opacity: 0, y: 40, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={reduce ? undefined : { opacity: 0, y: 24, scale: 0.97 }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+            >
+              {/* Image */}
+              <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                <Image
+                  src={`https://picsum.photos/seed/${modalProject.seed}/800/450`}
+                  alt={modalProject.alt}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                  priority
+                />
+                {/* Close button */}
+                <button
+                  onClick={() => setModalProject(null)}
+                  className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center"
+                  style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.1)" }}
+                  aria-label="Cerrar"
+                >
+                  <X size={16} weight="bold" className="text-white" />
+                </button>
+              </div>
+
+              {/* Info */}
+              <div className="px-5 py-4 flex items-center justify-between">
+                <div>
+                  <p className="font-mono text-[0.6rem] tracking-widest uppercase mb-1" style={{ color: "var(--color-accent)" }}>
+                    {modalProject.category}
+                  </p>
+                  <h3 className="font-black tracking-[-0.03em] text-white text-lg leading-tight">
+                    {modalProject.title}
+                  </h3>
+                </div>
+                <span className="text-white/20 text-2xl font-black font-mono">{modalProject.num}</span>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
