@@ -182,9 +182,9 @@ export default function Portfolio() {
                 <motion.div
                   key={activeProject.id}
                   className="w-full h-full rounded-2xl overflow-hidden"
-                  initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+                  initial={reduce ? undefined : { opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={reduce ? false : { opacity: 0, scale: 1.02 }}
+                  exit={reduce ? undefined : { opacity: 0, scale: 1.02 }}
                   transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                 >
                   <Image
